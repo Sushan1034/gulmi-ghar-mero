@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Force Fail Test
 
 on:
   push:
@@ -6,15 +6,14 @@ on:
       - main
 
 jobs:
-  build:
+  fail-job:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Run a simple command
-        run: echo "CI Pipeline executed successfully"
+      - name: Print something
+        run: echo "Workflow will fail now"
 
-      - name: Fail test
+      - name: Fail workflow intentionally
         run: exit 1
